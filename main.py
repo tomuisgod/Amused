@@ -4,13 +4,18 @@ import youtube_dl
 import discord
 import json
 import os
+import dotenv
 
 from discord.ext import commands
+from dotenv import load_dotenv
 
 client = discord.Client()
 client = commands.Bot(command_prefix="/")
 client.remove_command("help")
-token = "xxx"
+load_dotenv()
+TOKEN = os.getenv('TOKEN')
+
+
 
 with open('../../PycharmProjects/tomu/words.txt') as file:
     file = file.read().split()
@@ -104,32 +109,6 @@ async def _8ball(ctx, *, question):
     await ctx.send(embed=embed)
 
 @client.command()
-@commands.has_permissions(ban_members=True)
-async def ban(ctx, member: discord.Member, *, reason=None):
-    await member.ban(reason=reason)
-    embed = discord.Embed(title=":hammer: **Member has been banned!**", colour=discord.Color.red())
-
-    await ctx.send(embed=embed)
-
-
-@client.command()
-@commands.has_permissions(kick_members=True)
-async def kick(ctx, member: discord.Member, *, reason=None):
-    await member.kick(reason=reason)
-    embed = discord.Embed(title=":hammer: **Member has been kicked!**", color=discord.Color.red())
-
-    await ctx.send(embed=embed)
-
-
-@client.command()
-@commands.has_permissions(manage_messages=True)
-async def clear(ctx, amount=10):
-    await ctx.channel.purge(limit=amount)
-    embed = discord.Embed(title=":white_check_mark: **Selected amount of messages has been deleted!**", color=discord.Color.green())
-
-    await ctx.send(embed=embed)
-
-@client.command()
 async def skin(ctx, nick):
     embed = discord.Embed(title="Skin of play {}".format(nick),
                           description="[Click here to download the skin!](https://minotar.net/armor/body/{})".format(nick),
@@ -216,4 +195,4 @@ for filename in os.listdir('./cogs/'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 
-client.run(token)
+client.run(TOKEN)
