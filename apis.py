@@ -50,6 +50,17 @@ class API(commands.Cog):
         embed.set_footer(text="{}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
 
         await ctx.send(embed=embed)
+    
+    @commands.command()
+    async def skin(ctx, nick):
+        embed = discord.Embed(title="Skin of play {}".format(nick),
+                              description="[Click here to download the skin!](https://minotar.net/armor/body/{})".format(
+                                  nick),
+                              color=discord.Color.blurple())
+
+        embed.set_image(url="https://minotar.net/armor/body/{}".format(nick))
+        embed.set_footer(text="Skin requested by {}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
+        await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(API(client))
