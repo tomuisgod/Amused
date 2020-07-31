@@ -20,11 +20,22 @@ class API(commands.Cog):
 
     @commands.command()
     async def waifus(self, ctx):
-        r = requests.get("https://api.deepai.org/api/waifu2x")
+        r = requests.get("https://waifu.pics/api/sfw")
         res = r.content
         res = json.loads(res)
-        embed = discord.Embed(title=" ", color=discord.Color.blurple())
-        embed.set_image(url=res["image"])
+        embed = discord.Embed(title=" ", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
+        embed.set_image(url=res["url"])
+        embed.set_footer(text="{}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
+
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def dance(self, ctx):
+        r = requests.get("https://waifu.pics/api/dance")
+        res = r.content
+        res = json.loads(res)
+        embed = discord.Embed(title=" ", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
+        embed.set_image(url=res["url"])
         embed.set_footer(text="{}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
 
         await ctx.send(embed=embed)
