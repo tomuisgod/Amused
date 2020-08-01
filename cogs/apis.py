@@ -52,6 +52,17 @@ class API(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
+    async def meme(self, ctx):
+        r = requests.get("https://meme-api.glitch.me/dank")
+        res = r.content
+        res = json.loads(res)
+        embed = discord.Embed(title=" ", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
+        embed.set_image(url=res["meme"])
+        embed.set_footer(text="{}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
+
+        await ctx.send(embed=embed)
+
+    @commands.command()
     async def skin(self, ctx, nick):
         embed = discord.Embed(title="Skin of player {}".format(nick),
                               description="[Click here to download the skin!](https://minotar.net/armor/body/{})".format(
