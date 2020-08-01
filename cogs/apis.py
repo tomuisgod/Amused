@@ -30,22 +30,11 @@ class API(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def dance(self, ctx):
-        r = requests.get("https://waifu.pics/api/dance")
-        res = r.content
-        res = json.loads(res)
-        embed = discord.Embed(title=" ", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
-        embed.set_image(url=res["url"])
-        embed.set_footer(text="{}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
-
-        await ctx.send(embed=embed)
-
-    @commands.command()
     async def shiba(self, ctx):
         r = requests.get("http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true")
         res = r.content
         res = json.loads(res)
-        embed = discord.Embed(title="**Random Shiba**", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=" ", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
         embed.set_image(url=res[0])
         embed.set_footer(text="{}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
 
@@ -56,15 +45,15 @@ class API(commands.Cog):
         r = requests.get("https://api.alexflipnote.dev/dogs")
         res = r.content
         res = json.loads(res)
-        embed = discord.Embed(title="**Random dog**", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
+        embed = discord.Embed(title=" ", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
         embed.set_image(url=res["file"])
         embed.set_footer(text="{}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
 
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def skin(ctx, nick):
-        embed = discord.Embed(title="Skin of play {}".format(nick),
+    async def skin(self, ctx, nick):
+        embed = discord.Embed(title="Skin of player {}".format(nick),
                               description="[Click here to download the skin!](https://minotar.net/armor/body/{})".format(
                                   nick),
                               color=discord.Color.blurple())
