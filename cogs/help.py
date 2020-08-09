@@ -24,7 +24,7 @@ class Help(commands.Cog):
         embed.add_field(name=":monkey_face: Fun", value="`pp` | `iq` | `8b` | `say` ", inline=False)
         embed.add_field(name=":couple: Interactions", value="`dance` | `hug` | `kiss` | `bully` | `cry` | `pat` | "
                                                             "`highfive` | `bite` | `slap`", inline=False)
-        embed.add_field(name=":gear: Information", value="`help` | `info`", inline=False)
+        embed.add_field(name=":gear: Information", value="`help` | `info` | `profile` | `avatar`", inline=False)
         embed.add_field(name=":frame_photo: Photos", value="`waifus` | `shiba` | `dog` | `skin` | `meme`", inline=False)
         embed.add_field(name=":hammer: Administration", value="`ban` | `kick` | `clear`", inline=False)
         embed.add_field(name=":test_tube: Development", value="`load` | `unload` | `reload`")
