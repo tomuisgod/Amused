@@ -9,22 +9,19 @@ import dotenv
 from discord.ext import commands
 from dotenv import load_dotenv
 
+
 client = discord.Client()
 client = commands.Bot(command_prefix="/")
 client.remove_command("help")
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
-
-
+os.chdir(r"/Users/tomaslovrant/PycharmProjects/tomu")
 
 with open('../../PycharmProjects/tomu/words.txt') as file:
     file = file.read().split()
 
 
-
-
-
-@client.event #zaciatok
+@client.event  # zaciatok
 async def on_ready():
     print("-------------")
     print(client.user.name)
@@ -33,8 +30,9 @@ async def on_ready():
     print(client.latency * 1000)
     print("-------------")
 
+    guild_members = len(set(client.get_all_members()))
+    await client.change_presence(activity=discord.Game(name='with {} children'.format(guild_members)))
 
-    await client.change_presence(activity=discord.Game("/help"))
 
 @client.event
 async def on_command_error(ctx, error):
@@ -43,12 +41,14 @@ async def on_command_error(ctx, error):
         await ctx.send(embed=embed)
 
     if isinstance(error, commands.MissingPermissions):
-        embed = discord.Embed(title=":x: **You don't have enough permissions to execute this command!**", color=discord.Color.red())
+        embed = discord.Embed(title=":x: **You don't have enough permissions to execute this command!**",
+                              color=discord.Color.red())
         await ctx.send(embed=embed)
 
     if isinstance(error, commands.BotMissingPermissions):
-        embed = discord.Embed(title=":x: **Bot don't have enough permission to execute this command!**", color=discord.Color.red())
-        await ctx.send(embed=embeda)
+        embed = discord.Embed(title=":x: **Bot don't have enough permission to execute this command!**",
+                              color=discord.Color.red())
+        await ctx.send(embed=embed)
 
 
 
@@ -126,6 +126,5 @@ async def reload(ctx, cog=None):
 for filename in os.listdir('./cogs/'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
-
 
 client.run(TOKEN)
