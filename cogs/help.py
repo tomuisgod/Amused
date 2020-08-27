@@ -17,18 +17,18 @@ class Help(commands.Cog):
     # command
     @commands.command()
     async def help(self, ctx):
-        await ctx.send(":white_check_mark: | I sent you DM with help command!")
-
         embed = discord.Embed(title=" ", colour=discord.Color.blurple())
-        embed.set_author(name="My prefix is / and I have 25 commands!", icon_url=self.client.user.avatar_url)
-        embed.add_field(name=":monkey_face: Fun", value="`pp` | `iq` | `8b` | `say` ", inline=False)
-        embed.add_field(name=":couple: Interactions", value="`dance` | `hug` | `kiss` | `bully` | `cry` | `pat` | "
+        embed.set_author(name="My prefix is / and I have 27 commands!", icon_url=self.client.user.avatar_url)
+        embed.add_field(name="<:5574_WumpusGamer:748456675945742366> Fun", value="`pp` | `iq` | `8b` | `say` ", inline=False)
+        embed.add_field(name="<:9852_wumpus:748456487793197116> Activities", value="`dance` | `blush` | `cry`")
+        embed.add_field(name="<:1147_WumpusHeart:748456654630289418> Interactions", value=" `hug` | `kiss` | `bully` | "
                                                             "`highfive` | `bite` | `slap`", inline=False)
-        embed.add_field(name=":gear: Information", value="`help` | `info` | `profile` | `avatar`", inline=False)
-        embed.add_field(name=":frame_photo: Photos", value="`waifus` | `shiba` | `dog` | `skin` | `meme`", inline=False)
-        embed.add_field(name=":hammer: Administration", value="`ban` | `kick` | `clear`", inline=False)
-        embed.add_field(name=":test_tube: Development", value="`load` | `unload` | `reload`")
-        await ctx.author.send(embed=embed)
+        embed.add_field(name="<:4228_discord_bot_dev:748426660478451803> Information", value="`help` | `info` | `profile` | `avatar`", inline=False)
+        embed.add_field(name="<:1618_users_logo:748456867843539076> Photos", value="`waifus` | `shiba` | `dog` | `skin` | `meme`", inline=False)
+        embed.add_field(name="<:5864_WumpusCrown:748456700247539754> Administration", value="`ban` | `kick` | `clear`", inline=False)
+        embed.add_field(name="<:9552_BugHunterLvl2:748426887075856445> Development", value="`load` | `unload` | `reload`")
+
+        await ctx.send(embed=embed)
 
 
 def setup(client):
