@@ -73,5 +73,12 @@ class API(commands.Cog):
         embed.set_footer(text="Skin requested by {}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
 
+    @skin.error
+    async def skin_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            embed = discord.Embed(title="**Missing Argument! Please use correct form** `/skin Nick`",
+                                  color=discord.Color.red())
+            await ctx.send(embed=embed)
+
 def setup(client):
     client.add_cog(API(client))
