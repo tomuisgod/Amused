@@ -37,16 +37,16 @@ async def on_ready():
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-        embed = discord.Embed(title=":x: **Command not found! Try `/help`**", color=discord.Color.red())
+        embed = discord.Embed(title="<:9830_no:748426943766069308> **Command not found! Try `/help`**", color=discord.Color.red())
         await ctx.send(embed=embed)
 
     if isinstance(error, commands.MissingPermissions):
-        embed = discord.Embed(title=":x: **You don't have enough permissions to execute this command!**",
+        embed = discord.Embed(title="<:9830_no:748426943766069308> **You don't have enough permissions to execute this command!**",
                               color=discord.Color.red())
         await ctx.send(embed=embed)
 
     if isinstance(error, commands.BotMissingPermissions):
-        embed = discord.Embed(title=":x: **Bot don't have enough permission to execute this command!**",
+        embed = discord.Embed(title="<:9830_no:748426943766069308> **Bot don't have enough permission to execute this command!**",
                               color=discord.Color.red())
         await ctx.send(embed=embed)
 
