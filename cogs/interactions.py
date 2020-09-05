@@ -43,7 +43,7 @@ class Interactions(commands.Cog):
     @hug.error
     async def hug_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(title="**Missing Argument! Please use correct form** `/hug @mention`",
+            embed = discord.Embed(title="<:9830_no:748426943766069308> **Missing Argument! Please use correct form** `/hug @mention`",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
 
@@ -61,7 +61,7 @@ class Interactions(commands.Cog):
     @kiss.error
     async def kiss_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(title="**Missing Argument! Please use correct form** `/kiss @mention`",
+            embed = discord.Embed(title="<:9830_no:748426943766069308> **Missing Argument! Please use correct form** `/kiss @mention`",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
 
@@ -79,7 +79,7 @@ class Interactions(commands.Cog):
     @bully.error
     async def bully_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(title="**Missing Argument! Please use correct form** `/bully @mention`",
+            embed = discord.Embed(title="<:9830_no:748426943766069308> **Missing Argument! Please use correct form** `/bully @mention`",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
 
@@ -96,7 +96,7 @@ class Interactions(commands.Cog):
 
     @commands.command()
     async def blush(self, ctx):
-        r = requests.get("https://waifu.pics/api/pat")
+        r = requests.get("https://waifu.pics/api/blush")
         res = r.content
         res = json.loads(res)
         embed = discord.Embed(title=" ", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
@@ -104,6 +104,25 @@ class Interactions(commands.Cog):
         embed.set_footer(text="{}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
 
         await ctx.send(embed=embed)
+
+    @commands.command()
+    async def pat(self, ctx, member: discord.Member):
+        r = requests.get("https://waifu.pics/api/pat")
+        res = r.content
+        res = json.loads(res)
+        embed = discord.Embed(title=f"{ctx.message.author} pats {member}", color=discord.Color.blurple(), timestamp=ctx.message.created_at)
+        embed.set_image(url=res["url"])
+        embed.set_footer(text="{}".format(ctx.message.author.name), icon_url=ctx.author.avatar_url)
+
+        await ctx.send(embed=embed)
+
+    @pat.error
+    async def pat_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            embed = discord.Embed(title="<:9830_no:748426943766069308> **Missing Argument! Please use correct form** `/pat @mention`",
+                                  color=discord.Color.red())
+
+            await ctx.send(embed=embed)
 
     @commands.command()
     async def highfive(self, ctx, member: discord.Member):
@@ -119,7 +138,7 @@ class Interactions(commands.Cog):
     @highfive.error
     async def highfive_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(title="**Missing Argument! Please use correct form** `/highfive @mention`",
+            embed = discord.Embed(title="<:9830_no:748426943766069308> **Missing Argument! Please use correct form** `/highfive @mention`",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
 
@@ -137,7 +156,7 @@ class Interactions(commands.Cog):
     @bite.error
     async def bite_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(title="**Missing Argument! Please use correct form** `/bite @mention`",
+            embed = discord.Embed(title="<:9830_no:748426943766069308> **Missing Argument! Please use correct form** `/bite @mention`",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
 
@@ -155,7 +174,7 @@ class Interactions(commands.Cog):
     @slap.error
     async def slap_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(title="**Missing Argument! Please use correct form** `/slap @mention`",
+            embed = discord.Embed(title="<:9830_no:748426943766069308> **Missing Argument! Please use correct form** `/slap @mention`",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
 
