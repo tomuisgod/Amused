@@ -110,7 +110,7 @@ class Fun(commands.Cog):
     @_8ball.error
     async def _8ball_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(title="**Missing Argument! Please use correct form** `/8ball <question>`", color=discord.Color.red())
+            embed = discord.Embed(title="<:9830_no:748426943766069308> **Missing Argument! Please use correct form** `/8ball <question>`", color=discord.Color.red())
             await ctx.send(embed=embed)
 
 def setup(client):
